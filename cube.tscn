@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5a2v6m2bufp0"]
+
+[ext_resource type="Script" path="res://cube.gd" id="1_c3kax"]
+[ext_resource type="Texture2D" uid="uid://jtqxpm6wlv3n" path="res://green_box.png" id="2_30dom"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyjw7"]
+albedo_texture = ExtResource("2_30dom")
+uv1_scale = Vector3(3, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8q2na"]
+material = SubResource("StandardMaterial3D_lyjw7")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ps3m2"]
+
+[node name="Cube" type="CharacterBody3D"]
+script = ExtResource("1_c3kax")
+
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_8q2na")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_ps3m2")

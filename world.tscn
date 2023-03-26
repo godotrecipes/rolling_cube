@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://rdopxs5vaql2"]
+
+[ext_resource type="Script" path="res://world.gd" id="1_iyqfd"]
+[ext_resource type="Texture2D" uid="uid://dhf2k2u5oi73q" path="res://texture_01.png" id="1_ofe25"]
+[ext_resource type="PackedScene" uid="uid://c5a2v6m2bufp0" path="res://cube.tscn" id="2_pl5vf"]
+[ext_resource type="PackedScene" uid="uid://b5pdsfy7gdqx8" path="res://block.tscn" id="4_24j3s"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m7yul"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_a60fu"]
+sky_material = SubResource("ProceduralSkyMaterial_m7yul")
+
+[sub_resource type="Environment" id="Environment_gyr2i"]
+background_mode = 2
+sky = SubResource("Sky_a60fu")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n06ku"]
+albedo_texture = ExtResource("1_ofe25")
+uv1_scale = Vector3(12, 12, 12)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8ju7a"]
+material = SubResource("StandardMaterial3D_n06ku")
+size = Vector2(24, 24)
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_iyqfd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gyr2i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_8ju7a")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
+
+[node name="Cube" parent="." instance=ExtResource("2_pl5vf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+
+[node name="Block" parent="." instance=ExtResource("4_24j3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0.5, 1.5)
+
+[node name="Block2" parent="." instance=ExtResource("4_24j3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0.5, -5.5)
+
+[node name="Block3" parent="." instance=ExtResource("4_24j3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0.5, -1.5)
