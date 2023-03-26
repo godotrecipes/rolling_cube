@@ -9,13 +9,13 @@ var rolling = false
 	
 func _physics_process(delta):
 	var forward = Vector3.FORWARD
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("forward"):
 		roll(forward)
-	if Input.is_action_pressed("ui_down"):
+	if Input.is_action_pressed("back"):
 		roll(-forward)
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("right"):
 		roll(forward.cross(Vector3.UP))
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("left"):
 		roll(-forward.cross(Vector3.UP))
 		
 func roll(dir):
@@ -38,7 +38,7 @@ func roll(dir):
 	
 	# Step 2: Animate the rotation.
 	var axis = dir.cross(Vector3.DOWN)
-	var tween = create_tween()
+	var tween = create_tween().set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT_IN)
 	tween.tween_property(pivot, "transform",
 			pivot.transform.rotated_local(axis, PI/2), 1 / speed)
 	await tween.finished
