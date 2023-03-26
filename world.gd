@@ -1,6 +1,6 @@
 extends Node3D
 
-var cam_offset = Vector3(0, 4, 4)
+var cam_offset = Vector3(0, 4, 6)
 var cam_speed = 3.0
 
 func _process(delta):

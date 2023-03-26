@@ -29,7 +29,6 @@ func roll(dir):
 			mesh.global_transform.origin + dir * cube_size, collision_mask, [self])
 	var collision = space.intersect_ray(ray)
 	if collision:
-		print(collision.collider.name)
 		return
 
 	rolling = true
