@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var mesh = $Pivot/MeshInstance3D
 
 var cube_size = 1.0
-var speed = 4.0
+var speed = 3.0
 var rolling = false
 	
 func _physics_process(delta):
@@ -38,7 +38,7 @@ func roll(dir):
 	
 	# Step 2: Animate the rotation.
 	var axis = dir.cross(Vector3.DOWN)
-	var tween = create_tween().set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT_IN)
+	var tween = create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	tween.tween_property(pivot, "transform",
 			pivot.transform.rotated_local(axis, PI/2), 1 / speed)
 	await tween.finished
