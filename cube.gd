@@ -25,8 +25,8 @@ func roll(dir):
 
 	# Cast a ray to check for obstacles
 	var space = get_world_3d().direct_space_state
-	var ray = PhysicsRayQueryParameters3D.create(mesh.global_transform.origin,
-			mesh.global_transform.origin + dir * cube_size, collision_mask, [self])
+	var ray = PhysicsRayQueryParameters3D.create(mesh.global_position,
+			mesh.global_position + dir * cube_size, collision_mask, [self])
 	var collision = space.intersect_ray(ray)
 	if collision:
 		return
