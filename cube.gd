@@ -44,9 +44,9 @@ func roll(dir):
 	await tween.finished
 
 	# Step 3: Finalize the movement and reset the offset.
-	transform.origin += dir * cube_size
+	position += dir * cube_size
 	var b = mesh.global_transform.basis
 	pivot.transform = Transform3D.IDENTITY
-	mesh.transform.origin = Vector3(0, cube_size / 2, 0)
+	mesh.position = Vector3(0, cube_size / 2, 0)
 	mesh.global_transform.basis = b
 	rolling = false
