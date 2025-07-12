@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c5a2v6m2bufp0"]
 
-[ext_resource type="Script" path="res://cube.gd" id="1_c3kax"]
+[ext_resource type="Script" uid="uid://dr1h3r8apu447" path="res://cube.gd" id="1_c3kax"]
 [ext_resource type="Texture2D" uid="uid://jtqxpm6wlv3n" path="res://green_box.png" id="2_30dom"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lyjw7"]
